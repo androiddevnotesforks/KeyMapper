@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.keymapper.club/known-issues/">
       
       <link rel="icon" href="../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
@@ -480,6 +480,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#external-keyboard-language-is-set-to-english-us-when-using-key-mapper-android-11-only" class="md-nav__link">
+    External keyboard language is set to English US when using Key Mapper (Android 11 only)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#volume-increases-to-maxminimum-when-pressing-power-and-the-respective-volume-button-when-the-device-is-off" class="md-nav__link">
     Volume increases to max/minimum when pressing power and the respective volume button when the device is off
   </a>
@@ -520,6 +527,13 @@
         <li class="md-nav__item">
   <a href="#key-mapper-randomly-stops" class="md-nav__link">
     Key Mapper randomly stops
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-keyboard-language-is-set-to-english-us-when-using-key-mapper-android-11-only" class="md-nav__link">
+    External keyboard language is set to English US when using Key Mapper (Android 11 only)
   </a>
   
 </li>
@@ -569,6 +583,8 @@
 <p>In some <strong>very rare</strong> cases there is a bug in Key Mapper that causes it to crash while it is running in the background. You will need to send a bug report so that the developer can investigate the issue. Tap "Report bug" in Key Mapper's home screen menu.</p>
 </li>
 </ol>
+<h2 id="external-keyboard-language-is-set-to-english-us-when-using-key-mapper-android-11-only">External keyboard language is set to English US when using Key Mapper (Android 11 only)<a class="headerlink" href="#external-keyboard-language-is-set-to-english-us-when-using-key-mapper-android-11-only" title="Permanent link">&para;</a></h2>
+<p>This is a bug in Android 11 and should be fixed in Android 12. There is a setting in Key Mapper 2.3.0+ that helps you work around this issue. Read more <a href="https://sds100.github.io/KeyMapper/redirects/android-11-device-id-bug-work-around">here</a>.</p>
 <h2 id="volume-increases-to-maxminimum-when-pressing-power-and-the-respective-volume-button-when-the-device-is-off">Volume increases to max/minimum when pressing power and the respective volume button when the device is off<a class="headerlink" href="#volume-increases-to-maxminimum-when-pressing-power-and-the-respective-volume-button-when-the-device-is-off" title="Permanent link">&para;</a></h2>
 <p>This seems to be a bug with accessibility services on Android Pie+ on some devices. It also happens with the Macrodroid app when you only enable their accessibility service which filters key events. I tested Key Mapper with no code in the onKeyEvent function in the accessibility service and it still happens. These are the devices that I've tested.</p>
 <ul>
@@ -1014,10 +1030,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
       
     
   </body>
