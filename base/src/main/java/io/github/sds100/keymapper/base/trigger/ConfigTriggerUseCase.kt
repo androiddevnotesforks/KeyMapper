@@ -64,7 +64,10 @@ class ConfigTriggerUseCaseImpl @Inject constructor(
                         when (key) {
                             is EvdevTriggerKeyEntity -> EvdevTriggerKey.fromEntity(key)
                             is KeyEventTriggerKeyEntity -> KeyEventTriggerKey.fromEntity(key)
-                            is AssistantTriggerKeyEntity, is FingerprintTriggerKeyEntity, is FloatingButtonKeyEntity -> null
+                            is AssistantTriggerKeyEntity,
+                            is FingerprintTriggerKeyEntity,
+                            is FloatingButtonKeyEntity,
+                                -> null
                         }
                     }.filterIsInstance<KeyCodeTriggerKey>()
             }.firstBlocking()
@@ -118,19 +121,16 @@ class ConfigTriggerUseCaseImpl @Inject constructor(
         )
     }
 
-    override suspend fun addEvdevTriggerKey(
-        keyCode: Int,
-        scanCode: Int,
-        device: EvdevDeviceInfo,
-    ) = updateTrigger { trigger ->
-        delegate.addEvdevTriggerKey(
-            trigger,
-            keyCode,
-            scanCode,
-            device,
-            otherTriggerKeys = otherTriggerKeys,
-        )
-    }
+    override suspend fun addEvdevTriggerKey(keyCode: Int, scanCode: Int, device: EvdevDeviceInfo) =
+        updateTrigger { trigger ->
+            delegate.addEvdevTriggerKey(
+                trigger,
+                keyCode,
+                scanCode,
+                device,
+                otherTriggerKeys = otherTriggerKeys,
+            )
+        }
 
     override fun removeTriggerKey(uid: String) = updateTrigger { trigger ->
         delegate.removeTriggerKey(trigger, uid)
@@ -308,11 +308,7 @@ interface ConfigTriggerUseCase : GetDefaultKeyMapOptionsUseCase {
     suspend fun addFloatingButtonTriggerKey(buttonUid: String)
     fun addAssistantTriggerKey(type: AssistantTriggerType)
     fun addFingerprintGesture(type: FingerprintGestureType)
-    suspend fun addEvdevTriggerKey(
-        keyCode: Int,
-        scanCode: Int,
-        device: EvdevDeviceInfo,
-    )
+    suspend fun addEvdevTriggerKey(keyCode: Int, scanCode: Int, device: EvdevDeviceInfo)
 
     fun removeTriggerKey(uid: String)
     fun getTriggerKey(uid: String): TriggerKey?

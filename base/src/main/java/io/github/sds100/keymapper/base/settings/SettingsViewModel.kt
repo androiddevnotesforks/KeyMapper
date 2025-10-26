@@ -123,7 +123,9 @@ class SettingsViewModel @Inject constructor(
 
             if (externalDevices.isEmpty()) {
                 val dialog = DialogModel.Alert(
-                    message = getString(R.string.dialog_message_settings_no_external_devices_connected),
+                    message = getString(
+                        R.string.dialog_message_settings_no_external_devices_connected,
+                    ),
                     positiveButtonText = getString(R.string.pos_ok),
                 )
 

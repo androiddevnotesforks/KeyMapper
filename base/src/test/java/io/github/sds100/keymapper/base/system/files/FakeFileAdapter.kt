@@ -9,9 +9,7 @@ import org.junit.rules.TemporaryFolder
 import java.io.File
 import java.io.InputStream
 
-class FakeFileAdapter(
-    private val tempFolder: TemporaryFolder,
-) : FileAdapter {
+class FakeFileAdapter(private val tempFolder: TemporaryFolder) : FileAdapter {
 
     val privateFolder = tempFolder.newFolder("private")
 

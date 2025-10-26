@@ -240,10 +240,7 @@ class ConfigActionsUseCaseImpl @Inject constructor(
         state.update { it.copy(actionList = block(it.actionList)) }
     }
 
-    private fun setActionOption(
-        uid: String,
-        block: (action: Action) -> Action,
-    ) {
+    private fun setActionOption(uid: String, block: (action: Action) -> Action) {
         state.update { keyMap ->
             val newActionList = keyMap.actionList.map { action ->
                 if (action.uid == uid) {

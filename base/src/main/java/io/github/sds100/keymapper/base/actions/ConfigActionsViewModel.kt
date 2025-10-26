@@ -130,7 +130,9 @@ class ConfigActionsViewModel @Inject constructor(
                         ViewModelHelper.showDialogExplainingDndAccessBeingUnavailable(
                             resourceProvider = this@ConfigActionsViewModel,
                             dialogProvider = this@ConfigActionsViewModel,
-                            neverShowDndTriggerErrorAgain = { displayAction.neverShowDndTriggerError() },
+                            neverShowDndTriggerErrorAgain = {
+                                displayAction.neverShowDndTriggerError()
+                            },
                             fixError = { displayAction.fixError(error) },
                         )
                     }
@@ -259,9 +261,8 @@ class ConfigActionsViewModel @Inject constructor(
                 )
 
                 RepeatMode.LIMIT_REACHED -> config.setActionStopRepeatingWhenLimitReached(uid)
-                RepeatMode.TRIGGER_PRESSED_AGAIN -> config.setActionStopRepeatingWhenTriggerPressedAgain(
-                    uid,
-                )
+                RepeatMode.TRIGGER_PRESSED_AGAIN ->
+                    config.setActionStopRepeatingWhenTriggerPressedAgain(uid)
             }
         }
     }
@@ -333,7 +334,9 @@ class ConfigActionsViewModel @Inject constructor(
                 }
 
                 action.delayBeforeNextAction.apply {
-                    if (keyMap.isDelayBeforeNextActionAllowed() && action.delayBeforeNextAction != null) {
+                    if (keyMap.isDelayBeforeNextActionAllowed() &&
+                        action.delayBeforeNextAction != null
+                    ) {
                         if (this@buildString.isNotBlank()) {
                             append(" $midDot ")
                         }
@@ -440,9 +443,8 @@ class ConfigActionsViewModel @Inject constructor(
 }
 
 sealed class ConfigActionsState {
-    data class Empty(
-        val shortcuts: Set<ShortcutModel<ActionData>> = emptySet(),
-    ) : ConfigActionsState()
+    data class Empty(val shortcuts: Set<ShortcutModel<ActionData>> = emptySet()) :
+        ConfigActionsState()
 
     data class Loaded(
         val actions: List<ActionListItemModel> = emptyList(),

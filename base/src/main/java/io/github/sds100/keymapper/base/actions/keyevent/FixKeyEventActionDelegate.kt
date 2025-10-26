@@ -90,7 +90,8 @@ class FixKeyEventActionDelegateImpl @Inject constructor(
                 ) { proModeStatus, serviceState ->
                     FixKeyEventActionState.ProMode(
                         proModeStatus = proModeStatus,
-                        isAccessibilityServiceEnabled = serviceState == AccessibilityServiceState.ENABLED,
+                        isAccessibilityServiceEnabled =
+                        serviceState == AccessibilityServiceState.ENABLED,
                     )
                 }
             } else {
@@ -108,7 +109,8 @@ class FixKeyEventActionDelegateImpl @Inject constructor(
                         isEnabled = isEnabled,
                         isChosen = isChosen,
                         enablingRequiresUserInput = enablingRequiresUserInput,
-                        isAccessibilityServiceEnabled = serviceState == AccessibilityServiceState.ENABLED,
+                        isAccessibilityServiceEnabled =
+                        serviceState == AccessibilityServiceState.ENABLED,
                         proModeStatus = proModeStatus,
                         isAutoSwitchImeEnabled = changeImeOnInputFocus
                             ?: PreferenceDefaults.CHANGE_IME_ON_INPUT_FOCUS,

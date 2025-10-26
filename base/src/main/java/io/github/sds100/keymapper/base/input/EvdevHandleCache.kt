@@ -85,7 +85,9 @@ class EvdevHandleCache @Inject constructor(
 
         // Do it on a separate thread in case there is deadlock
         val newDevices = withContext(Dispatchers.IO) {
-            systemBridgeConnectionManager.run { bridge -> bridge.evdevInputDevices.associateBy { it.path } }
+            systemBridgeConnectionManager.run { bridge ->
+                bridge.evdevInputDevices.associateBy { it.path }
+            }
         }.onFailure { error ->
             Timber.e("Failed to get evdev input devices from system bridge $error")
         }.valueIfFailure { emptyMap() }

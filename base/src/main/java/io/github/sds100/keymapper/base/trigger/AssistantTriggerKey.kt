@@ -33,9 +33,7 @@ data class AssistantTriggerKey(
     }
 
     companion object {
-        fun fromEntity(
-            entity: AssistantTriggerKeyEntity,
-        ): TriggerKey {
+        fun fromEntity(entity: AssistantTriggerKeyEntity): TriggerKey {
             val type: AssistantTriggerType = when (entity.type) {
                 AssistantTriggerKeyEntity.ASSISTANT_TYPE_VOICE -> AssistantTriggerType.VOICE
                 AssistantTriggerKeyEntity.ASSISTANT_TYPE_DEVICE -> AssistantTriggerType.DEVICE

@@ -56,7 +56,9 @@ class LegacyFingerprintMapMigrationTest {
     fun `migrate 1 to 2`() {
         test(
             listOf(getLegacySwipeDownJsonFromFile("migration-10-11-test-data.json")).toJsonArray(),
-            listOf(getLegacySwipeDownJsonFromFile("migration-10-11-expected-data.json")).toJsonArray(),
+            listOf(
+                getLegacySwipeDownJsonFromFile("migration-10-11-expected-data.json"),
+            ).toJsonArray(),
             1,
             2,
         )
@@ -108,7 +110,12 @@ class LegacyFingerprintMapMigrationTest {
 
             val expectedElement = expectedData[index]
 
-            JsonTestUtils.compareBothWays(expectedElement, "expected", migratedFingerprintMap, "migrated")
+            JsonTestUtils.compareBothWays(
+                expectedElement,
+                "expected",
+                migratedFingerprintMap,
+                "migrated",
+            )
         }
     }
 }

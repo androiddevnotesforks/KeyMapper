@@ -89,7 +89,9 @@ class SwipePickDisplayCoordinateViewModel @Inject constructor(
         }
 
         if (count <= 0) {
-            return@map resourceProvider.getString(R.string.error_swipe_screen_fingercount_must_be_more_than_zero)
+            return@map resourceProvider.getString(
+                R.string.error_swipe_screen_fingercount_must_be_more_than_zero,
+            )
         }
 
         var maxFingerCount = 10
@@ -120,7 +122,9 @@ class SwipePickDisplayCoordinateViewModel @Inject constructor(
         }
 
         if (d <= 0) {
-            return@map resourceProvider.getString(R.string.error_swipe_screen_duration_must_be_more_than_zero)
+            return@map resourceProvider.getString(
+                R.string.error_swipe_screen_duration_must_be_more_than_zero,
+            )
         }
 
         null

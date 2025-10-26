@@ -49,7 +49,9 @@ class InteractUiElementController @Inject constructor(
             .launchIn(coroutineScope)
     }
 
-    override fun getInteractionsByPackage(packageName: String): Flow<State<List<AccessibilityNodeEntity>>> {
+    override fun getInteractionsByPackage(
+        packageName: String,
+    ): Flow<State<List<AccessibilityNodeEntity>>> {
         return nodeRepository.nodes.map { state ->
             state.mapData { nodes ->
                 nodes.filter { it.packageName == packageName }
@@ -61,9 +63,11 @@ class InteractUiElementController @Inject constructor(
         return nodeRepository.get(id)
     }
 
-    override fun getAppName(packageName: String): KMResult<String> = packageManagerAdapter.getAppName(packageName)
+    override fun getAppName(packageName: String): KMResult<String> =
+        packageManagerAdapter.getAppName(packageName)
 
-    override fun getAppIcon(packageName: String): KMResult<Drawable> = packageManagerAdapter.getAppIcon(packageName)
+    override fun getAppIcon(packageName: String): KMResult<Drawable> =
+        packageManagerAdapter.getAppIcon(packageName)
 
     override suspend fun startRecording(): KMResult<*> {
         nodeRepository.deleteAll()

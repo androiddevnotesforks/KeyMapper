@@ -148,8 +148,8 @@ class ChooseConstraintViewModel @Inject constructor(
                 ConstraintId.BT_DEVICE_CONNECTED,
                 ConstraintId.BT_DEVICE_DISCONNECTED,
                     -> onSelectBluetoothConstraint(
-                    constraintType,
-                )
+                        constraintType,
+                    )
 
                 ConstraintId.SCREEN_ON -> returnResult.emit(ConstraintData.ScreenOn)
 
@@ -162,16 +162,24 @@ class ChooseConstraintViewModel @Inject constructor(
                     returnResult.emit(ConstraintData.OrientationLandscape)
 
                 ConstraintId.ORIENTATION_0 ->
-                    returnResult.emit(ConstraintData.OrientationCustom(orientation = Orientation.ORIENTATION_0))
+                    returnResult.emit(
+                        ConstraintData.OrientationCustom(orientation = Orientation.ORIENTATION_0),
+                    )
 
                 ConstraintId.ORIENTATION_90 ->
-                    returnResult.emit(ConstraintData.OrientationCustom(orientation = Orientation.ORIENTATION_90))
+                    returnResult.emit(
+                        ConstraintData.OrientationCustom(orientation = Orientation.ORIENTATION_90),
+                    )
 
                 ConstraintId.ORIENTATION_180 ->
-                    returnResult.emit(ConstraintData.OrientationCustom(orientation = Orientation.ORIENTATION_180))
+                    returnResult.emit(
+                        ConstraintData.OrientationCustom(orientation = Orientation.ORIENTATION_180),
+                    )
 
                 ConstraintId.ORIENTATION_270 ->
-                    returnResult.emit(ConstraintData.OrientationCustom(orientation = Orientation.ORIENTATION_270))
+                    returnResult.emit(
+                        ConstraintData.OrientationCustom(orientation = Orientation.ORIENTATION_270),
+                    )
 
                 ConstraintId.FLASHLIGHT_ON -> {
                     val lens = chooseFlashlightLens() ?: return@launch
@@ -189,8 +197,8 @@ class ChooseConstraintViewModel @Inject constructor(
                 ConstraintId.WIFI_CONNECTED,
                 ConstraintId.WIFI_DISCONNECTED,
                     -> onSelectWifiConnectedConstraint(
-                    constraintType,
-                )
+                        constraintType,
+                    )
 
                 ConstraintId.IME_CHOSEN,
                 ConstraintId.IME_NOT_CHOSEN,
@@ -374,7 +382,9 @@ class ChooseConstraintViewModel @Inject constructor(
                 deviceName = device.name,
             )
 
-            else -> throw IllegalArgumentException("Don't know how to create $type constraint after choosing app")
+            else -> throw IllegalArgumentException(
+                "Don't know how to create $type constraint after choosing app",
+            )
         }
 
         returnResult.emit(constraintData)
@@ -405,7 +415,9 @@ class ChooseConstraintViewModel @Inject constructor(
                 packageName = packageName,
             )
 
-            else -> throw IllegalArgumentException("Don't know how to create $type constraint after choosing app")
+            else -> throw IllegalArgumentException(
+                "Don't know how to create $type constraint after choosing app",
+            )
         }
 
         returnResult.emit(constraintData)

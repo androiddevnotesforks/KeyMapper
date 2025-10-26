@@ -19,9 +19,7 @@ class ViewModelModule {
     @Provides
     @ViewModelScoped
     @Named("viewmodel")
-    fun provideViewModelScope(
-        lifecycle: ViewModelLifecycle,
-    ): CoroutineScope {
+    fun provideViewModelScope(lifecycle: ViewModelLifecycle): CoroutineScope {
         val scope = CoroutineScope(Dispatchers.Main.immediate + SupervisorJob())
         lifecycle.addOnClearedListener {
             scope.cancel()

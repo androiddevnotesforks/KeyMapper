@@ -57,7 +57,9 @@ class SwitchImeAsyncImpl @Inject constructor(
     private fun enableImeWithoutUserInput(imeId: String): KMResult<Unit> {
         return inputMethodAdapter.getInfoByPackageName(buildConfigProvider.packageName)
             .then { keyMapperImeInfo ->
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && imeId == keyMapperImeInfo.id) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                    imeId == keyMapperImeInfo.id
+                ) {
                     serviceAdapter.sendAsync(
                         AccessibilityServiceEvent.EnableInputMethod(
                             keyMapperImeInfo.id,

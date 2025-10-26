@@ -132,9 +132,7 @@ class ChooseActionViewModel @Inject constructor(
         add(unsupportedGroup)
     }
 
-    private fun buildListItems(
-        actionIds: List<ActionId>,
-    ): List<SimpleListItemModel> = buildList {
+    private fun buildListItems(actionIds: List<ActionId>): List<SimpleListItemModel> = buildList {
         for (actionId in actionIds) {
             // See Issue #1593. This action should no longer exist because it is a relic
             // of the past when most apps had a 3-dot menu with a consistent content description
@@ -151,7 +149,9 @@ class ChooseActionViewModel @Inject constructor(
             val icon = ActionUtils.getComposeIcon(actionId)
 
             val subtitle = when {
-                error == SystemError.PermissionDenied(Permission.ROOT) -> getString(R.string.choose_action_warning_requires_root)
+                error == SystemError.PermissionDenied(
+                    Permission.ROOT,
+                ) -> getString(R.string.choose_action_warning_requires_root)
                 error != null -> error.getFullMessage(this@ChooseActionViewModel)
                 else -> null
             }
@@ -180,7 +180,9 @@ class ChooseActionViewModel @Inject constructor(
                 DialogModel.Alert(
                     message = getString(R.string.action_open_app_dialog_message),
                     title = getString(R.string.action_open_app_dialog_title),
-                    positiveButtonText = getString(R.string.action_open_app_dialog_read_more_button),
+                    positiveButtonText = getString(
+                        R.string.action_open_app_dialog_read_more_button,
+                    ),
                     negativeButtonText = getString(R.string.action_open_app_dialog_ignore_button),
                 ),
             )

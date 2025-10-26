@@ -42,7 +42,9 @@ class ProModeSetupViewModel @Inject constructor(
             SystemBridgeSetupStep.WIFI_NETWORK -> useCase.connectWifiNetwork()
             SystemBridgeSetupStep.WIRELESS_DEBUGGING -> useCase.enableWirelessDebugging()
             SystemBridgeSetupStep.ADB_PAIRING -> useCase.pairWirelessAdb()
-            SystemBridgeSetupStep.START_SERVICE -> viewModelScope.launch { useCase.startSystemBridgeWithAdb() }
+            SystemBridgeSetupStep.START_SERVICE -> viewModelScope.launch {
+                useCase.startSystemBridgeWithAdb()
+            }
             SystemBridgeSetupStep.STARTED -> viewModelScope.launch { popBackStack() }
         }
     }
@@ -75,7 +77,9 @@ class ProModeSetupViewModel @Inject constructor(
                 stepCount = SystemBridgeSetupStep.entries.size,
                 step = step,
                 isSetupAssistantChecked = isSetupAssistantChecked,
-                isSetupAssistantButtonEnabled = step != SystemBridgeSetupStep.ACCESSIBILITY_SERVICE && step != SystemBridgeSetupStep.STARTED,
+                isSetupAssistantButtonEnabled =
+                step != SystemBridgeSetupStep.ACCESSIBILITY_SERVICE &&
+                    step != SystemBridgeSetupStep.STARTED,
             ),
         )
     }

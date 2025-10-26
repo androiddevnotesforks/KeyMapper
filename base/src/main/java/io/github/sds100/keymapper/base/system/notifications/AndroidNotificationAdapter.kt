@@ -203,9 +203,7 @@ class AndroidNotificationAdapter @Inject constructor(
         }
     }
 
-    private fun createActionIntent(
-        notificationAction: KMNotificationAction,
-    ): PendingIntent {
+    private fun createActionIntent(notificationAction: KMNotificationAction): PendingIntent {
         return when (notificationAction) {
             KMNotificationAction.Activity.AccessibilitySettings -> createActivityPendingIntent(
                 Settings.ACTION_ACCESSIBILITY_SETTINGS,
@@ -215,8 +213,12 @@ class AndroidNotificationAdapter @Inject constructor(
                 notificationAction.action,
             )
 
-            is KMNotificationAction.Broadcast -> createBroadcastPendingIntent(notificationAction.intentAction.name)
-            is KMNotificationAction.RemoteInput -> createRemoteInputPendingIntent(notificationAction.intentAction.name)
+            is KMNotificationAction.Broadcast -> createBroadcastPendingIntent(
+                notificationAction.intentAction.name,
+            )
+            is KMNotificationAction.RemoteInput -> createRemoteInputPendingIntent(
+                notificationAction.intentAction.name,
+            )
         }
     }
 

@@ -51,7 +51,9 @@ class SystemBridgeSetupUseCaseImpl @Inject constructor(
                 permissionAdapter.isGrantedFlow(Permission.WRITE_SECURE_SETTINGS),
                 networkAdapter.isWifiConnected,
             ) { isWriteSecureSettingsGranted, isWifiConnected ->
-                isWriteSecureSettingsGranted && isWifiConnected && systemBridgeSetupController.isAdbPaired()
+                isWriteSecureSettingsGranted &&
+                    isWifiConnected &&
+                    systemBridgeSetupController.isAdbPaired()
             }.flowOn(Dispatchers.IO)
         } else {
             flowOf(false)

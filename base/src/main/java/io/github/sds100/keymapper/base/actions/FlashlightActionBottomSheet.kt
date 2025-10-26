@@ -193,7 +193,9 @@ private fun EnableFlashlightActionBottomSheet(
                     IconButton(onClick = { onSelectStrength(sliderDefault) }) {
                         Icon(
                             Icons.Rounded.RestartAlt,
-                            contentDescription = stringResource(R.string.slider_reset_content_description),
+                            contentDescription = stringResource(
+                                R.string.slider_reset_content_description,
+                            ),
                         )
                     }
                 }

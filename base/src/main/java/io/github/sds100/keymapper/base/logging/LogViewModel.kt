@@ -14,9 +14,8 @@ import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
-class LogViewModel @Inject constructor(
-    private val displayLogUseCase: DisplayLogUseCase,
-) : ViewModel() {
+class LogViewModel @Inject constructor(private val displayLogUseCase: DisplayLogUseCase) :
+    ViewModel() {
     @SuppressLint("ConstantLocale")
     private val dateFormat = SimpleDateFormat("MM/dd HH:mm:ss.SSS", Locale.getDefault())
 

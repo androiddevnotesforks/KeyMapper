@@ -209,7 +209,11 @@ class ListKeyMapsUseCaseImpl @Inject constructor(
         return RepositoryUtils.saveUniqueName(
             entity = group,
             saveBlock = { renamedGroup ->
-                if (siblings.any { sibling -> sibling.uid != group.uid && sibling.name == renamedGroup.name }) {
+                if (siblings.any { sibling ->
+                        sibling.uid != group.uid &&
+                            sibling.name == renamedGroup.name
+                    }
+                ) {
                     throw IllegalStateException("Non unique group name")
                 }
             },

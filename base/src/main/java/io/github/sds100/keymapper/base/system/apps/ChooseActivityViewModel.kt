@@ -20,9 +20,8 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @HiltViewModel
-class ChooseActivityViewModel @Inject constructor(
-    private val useCase: DisplayAppsUseCase,
-) : ViewModel() {
+class ChooseActivityViewModel @Inject constructor(private val useCase: DisplayAppsUseCase) :
+    ViewModel() {
 
     val searchQuery = MutableStateFlow<String?>(null)
 

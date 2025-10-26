@@ -67,8 +67,9 @@ class CreateConstraintUseCaseImpl @Inject constructor(
         )
     }
 
-    override fun getSavedWifiSSIDs(): Flow<List<String>> = preferenceRepository.get(Keys.savedWifiSSIDs)
-        .map { it?.toList() ?: emptyList() }
+    override fun getSavedWifiSSIDs(): Flow<List<String>> =
+        preferenceRepository.get(Keys.savedWifiSSIDs)
+            .map { it?.toList() ?: emptyList() }
 
     override fun getFlashlightLenses(): Set<CameraLens> {
         return CameraLens.entries.filter { cameraAdapter.getFlashInfo(it) != null }.toSet()

@@ -106,7 +106,9 @@ class ChooseSoundFileViewModel @Inject constructor(
                         )
                     }
                 }.onFailure { error ->
-                    val toast = DialogModel.Toast(error.getFullMessage(this@ChooseSoundFileViewModel))
+                    val toast = DialogModel.Toast(
+                        error.getFullMessage(this@ChooseSoundFileViewModel),
+                    )
                     showDialog("failed_toast", toast)
                 }
         }

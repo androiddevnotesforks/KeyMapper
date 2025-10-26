@@ -115,7 +115,9 @@ class ConfigConstraintsViewModel @Inject constructor(
                     ViewModelHelper.showDialogExplainingDndAccessBeingUnavailable(
                         resourceProvider = this@ConfigConstraintsViewModel,
                         dialogProvider = this@ConfigConstraintsViewModel,
-                        neverShowDndTriggerErrorAgain = { displayConstraint.neverShowDndTriggerError() },
+                        neverShowDndTriggerErrorAgain = {
+                            displayConstraint.neverShowDndTriggerError()
+                        },
                         fixError = { displayConstraint.fixError(error) },
                     )
                 }
@@ -145,7 +147,9 @@ class ConfigConstraintsViewModel @Inject constructor(
         }
     }
 
-    private fun buildShortcutFromData(constraintData: ConstraintData): ShortcutModel<ConstraintData> {
+    private fun buildShortcutFromData(
+        constraintData: ConstraintData,
+    ): ShortcutModel<ConstraintData> {
         val constraint = Constraint(data = constraintData)
         return ShortcutModel(
             icon = uiHelper.getIcon(constraint),
@@ -171,7 +175,9 @@ class ConfigConstraintsViewModel @Inject constructor(
             ConstraintListItemModel(
                 id = constraint.uid,
                 icon = icon,
-                constraintModeLink = if (state.constraints.size > 1 && index < state.constraints.size - 1) {
+                constraintModeLink = if (state.constraints.size > 1 &&
+                    index < state.constraints.size - 1
+                ) {
                     state.mode
                 } else {
                     null
@@ -191,9 +197,8 @@ class ConfigConstraintsViewModel @Inject constructor(
 }
 
 sealed class ConfigConstraintsState {
-    data class Empty(
-        val shortcuts: Set<ShortcutModel<ConstraintData>> = emptySet(),
-    ) : ConfigConstraintsState()
+    data class Empty(val shortcuts: Set<ShortcutModel<ConstraintData>> = emptySet()) :
+        ConfigConstraintsState()
 
     data class Loaded(
         val constraintList: List<ConstraintListItemModel>,

@@ -12,11 +12,8 @@ import io.github.sds100.keymapper.base.utils.ui.color
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.math.roundToInt
 
-class PickCoordinateImageView(
-    context: Context,
-    attrs: AttributeSet?,
-    defStyleAttr: Int,
-) : AppCompatImageView(context, attrs, defStyleAttr) {
+class PickCoordinateImageView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
+    AppCompatImageView(context, attrs, defStyleAttr) {
 
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context) : this(context, null, 0)

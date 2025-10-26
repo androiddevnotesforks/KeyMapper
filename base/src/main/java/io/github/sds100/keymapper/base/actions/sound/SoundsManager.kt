@@ -105,11 +105,12 @@ class SoundsManagerImpl @Inject constructor(
             .map { getSoundFileInfo(it.name!!) }
     }
 
-    private fun createSoundCopyFileName(originalSoundFile: IFile, uid: String): String = buildString {
-        append(originalSoundFile.baseName)
-        append("_$uid")
-        append(".${originalSoundFile.extension}")
-    }
+    private fun createSoundCopyFileName(originalSoundFile: IFile, uid: String): String =
+        buildString {
+            append(originalSoundFile.baseName)
+            append("_$uid")
+            append(".${originalSoundFile.extension}")
+        }
 }
 
 interface SoundsManager {

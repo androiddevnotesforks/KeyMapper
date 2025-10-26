@@ -28,9 +28,8 @@ import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
-class ChooseAppViewModel @Inject constructor(
-    private val useCase: DisplayAppsUseCase,
-) : ViewModel() {
+class ChooseAppViewModel @Inject constructor(private val useCase: DisplayAppsUseCase) :
+    ViewModel() {
 
     val searchQuery = MutableStateFlow<String?>(null)
 

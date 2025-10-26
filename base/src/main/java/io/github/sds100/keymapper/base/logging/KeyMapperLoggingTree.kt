@@ -45,7 +45,11 @@ class KeyMapperLoggingTree @Inject constructor(
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
         // error, warn, and info logs should always log even if the user setting is turned off
-        if (!logEverything.value && priority != Log.ERROR && priority != Log.WARN && priority != Log.INFO) {
+        if (!logEverything.value &&
+            priority != Log.ERROR &&
+            priority != Log.WARN &&
+            priority != Log.INFO
+        ) {
             return
         }
 

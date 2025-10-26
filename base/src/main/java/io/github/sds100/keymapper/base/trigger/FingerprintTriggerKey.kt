@@ -32,9 +32,7 @@ data class FingerprintTriggerKey(
     }
 
     companion object {
-        fun fromEntity(
-            entity: FingerprintTriggerKeyEntity,
-        ): TriggerKey {
+        fun fromEntity(entity: FingerprintTriggerKeyEntity): TriggerKey {
             val type: FingerprintGestureType = when (entity.type) {
                 FingerprintTriggerKeyEntity.ID_SWIPE_DOWN -> FingerprintGestureType.SWIPE_DOWN
                 FingerprintTriggerKeyEntity.ID_SWIPE_UP -> FingerprintGestureType.SWIPE_UP

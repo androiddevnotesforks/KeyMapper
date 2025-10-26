@@ -81,7 +81,13 @@ class CreateKeyMapShortcutViewModel @Inject constructor(
                 listKeyMaps.triggerErrorSnapshot,
                 listKeyMaps.actionErrorSnapshot,
                 listKeyMaps.constraintErrorSnapshot,
-            ) { keyMapGroup, showDeviceDescriptors, triggerErrorSnapshot, actionErrorSnapshot, constraintErrorSnapshot ->
+            ) {
+                    keyMapGroup,
+                    showDeviceDescriptors,
+                    triggerErrorSnapshot,
+                    actionErrorSnapshot,
+                    constraintErrorSnapshot,
+                ->
                 _state.value = buildState(
                     keyMapGroup,
                     showDeviceDescriptors,
@@ -152,7 +158,9 @@ class CreateKeyMapShortcutViewModel @Inject constructor(
                 breadcrumbs = breadcrumbs,
                 isEditingGroupName = false,
                 isNewGroup = false,
-                parentConstraintCount = keyMapGroup.parents.sumOf { it.constraintState.constraints.size },
+                parentConstraintCount = keyMapGroup.parents.sumOf {
+                    it.constraintState.constraints.size
+                },
                 keyMapsEnabled = null,
             )
         }

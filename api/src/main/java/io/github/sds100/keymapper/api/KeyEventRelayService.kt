@@ -117,7 +117,9 @@ class KeyEventRelayService : Service() {
             val sourcePackageName = getCallerPackageName() ?: return
 
             if (client == null || !permittedPackages.contains(sourcePackageName)) {
-                Timber.d("An unrecognized package $sourcePackageName tried to register a key event relay callback.")
+                Timber.d(
+                    "An unrecognized package $sourcePackageName tried to register a key event relay callback.",
+                )
                 return
             }
 

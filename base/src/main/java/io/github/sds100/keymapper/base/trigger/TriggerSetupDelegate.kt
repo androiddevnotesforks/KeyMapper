@@ -118,7 +118,8 @@ class TriggerSetupDelegateImpl @Inject constructor(
             forceProMode,
         ) { serviceState, isScreenOffChecked, recordTriggerState, proModeStatus, forceProMode ->
             val areRequirementsMet = if (isScreenOffChecked) {
-                serviceState == AccessibilityServiceState.ENABLED && proModeStatus == ProModeStatus.ENABLED
+                serviceState == AccessibilityServiceState.ENABLED &&
+                    proModeStatus == ProModeStatus.ENABLED
             } else {
                 serviceState == AccessibilityServiceState.ENABLED
             }
@@ -145,15 +146,19 @@ class TriggerSetupDelegateImpl @Inject constructor(
                         recordTriggerController.state,
                     ) { serviceState, isImeEnabled, isImeChosen, recordTriggerState ->
                         val areRequirementsMet =
-                            serviceState == AccessibilityServiceState.ENABLED && isImeEnabled && isImeChosen
+                            serviceState == AccessibilityServiceState.ENABLED &&
+                                isImeEnabled &&
+                                isImeChosen
 
                         TriggerSetupState.Gamepad.Dpad(
-                            isAccessibilityServiceEnabled = serviceState == AccessibilityServiceState.ENABLED,
+                            isAccessibilityServiceEnabled =
+                            serviceState == AccessibilityServiceState.ENABLED,
                             isImeEnabled = isImeEnabled,
                             isImeChosen = isImeChosen,
                             areRequirementsMet = areRequirementsMet,
                             recordTriggerState = recordTriggerState,
-                            enablingRequiresUserInput = Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU,
+                            enablingRequiresUserInput =
+                            Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU,
                         )
                     }
                 }
@@ -165,15 +170,23 @@ class TriggerSetupDelegateImpl @Inject constructor(
                         recordTriggerController.state,
                         proModeStatus,
                         forceProMode,
-                    ) { serviceState, isScreenOffChecked, recordTriggerState, proModeStatus, forceProMode ->
+                    ) {
+                            serviceState,
+                            isScreenOffChecked,
+                            recordTriggerState,
+                            proModeStatus,
+                            forceProMode,
+                        ->
                         val areRequirementsMet = if (isScreenOffChecked) {
-                            serviceState == AccessibilityServiceState.ENABLED && proModeStatus == ProModeStatus.ENABLED
+                            serviceState == AccessibilityServiceState.ENABLED &&
+                                proModeStatus == ProModeStatus.ENABLED
                         } else {
                             serviceState == AccessibilityServiceState.ENABLED
                         }
 
                         TriggerSetupState.Gamepad.SimpleButtons(
-                            isAccessibilityServiceEnabled = serviceState == AccessibilityServiceState.ENABLED,
+                            isAccessibilityServiceEnabled =
+                            serviceState == AccessibilityServiceState.ENABLED,
                             isUseProModeChecked = isScreenOffChecked,
                             proModeStatus = proModeStatus,
                             areRequirementsMet = areRequirementsMet,
@@ -195,7 +208,8 @@ class TriggerSetupDelegateImpl @Inject constructor(
             forceProMode,
         ) { serviceState, isScreenOffChecked, recordTriggerState, proModeStatus, forceProMode ->
             val areRequirementsMet = if (isScreenOffChecked) {
-                serviceState == AccessibilityServiceState.ENABLED && proModeStatus == ProModeStatus.ENABLED
+                serviceState == AccessibilityServiceState.ENABLED &&
+                    proModeStatus == ProModeStatus.ENABLED
             } else {
                 serviceState == AccessibilityServiceState.ENABLED
             }
@@ -218,7 +232,8 @@ class TriggerSetupDelegateImpl @Inject constructor(
             proModeStatus,
         ) { serviceState, recordTriggerState, proModeStatus ->
             val areRequirementsMet =
-                serviceState == AccessibilityServiceState.ENABLED && proModeStatus == ProModeStatus.ENABLED
+                serviceState == AccessibilityServiceState.ENABLED &&
+                    proModeStatus == ProModeStatus.ENABLED
 
             TriggerSetupState.NotDetected(
                 isAccessibilityServiceEnabled = serviceState == AccessibilityServiceState.ENABLED,
@@ -238,7 +253,8 @@ class TriggerSetupDelegateImpl @Inject constructor(
             forceProMode,
         ) { serviceState, isScreenOffChecked, recordTriggerState, proModeStatus, forceProMode ->
             val areRequirementsMet = if (isScreenOffChecked) {
-                serviceState == AccessibilityServiceState.ENABLED && proModeStatus == ProModeStatus.ENABLED
+                serviceState == AccessibilityServiceState.ENABLED &&
+                    proModeStatus == ProModeStatus.ENABLED
             } else {
                 serviceState == AccessibilityServiceState.ENABLED
             }
@@ -276,7 +292,8 @@ class TriggerSetupDelegateImpl @Inject constructor(
             proModeStatus,
         ) { serviceState, recordTriggerState, proModeStatus ->
             val areRequirementsMet =
-                serviceState == AccessibilityServiceState.ENABLED && proModeStatus == ProModeStatus.ENABLED
+                serviceState == AccessibilityServiceState.ENABLED &&
+                    proModeStatus == ProModeStatus.ENABLED
 
             val remapStatus = if (Build.VERSION.SDK_INT >= Constants.SYSTEM_BRIDGE_MIN_API) {
                 if (areRequirementsMet) {
@@ -305,7 +322,8 @@ class TriggerSetupDelegateImpl @Inject constructor(
             proModeStatus,
         ) { serviceState, recordTriggerState, proModeStatus ->
             val areRequirementsMet =
-                serviceState == AccessibilityServiceState.ENABLED && proModeStatus == ProModeStatus.ENABLED
+                serviceState == AccessibilityServiceState.ENABLED &&
+                    proModeStatus == ProModeStatus.ENABLED
 
             val remapStatus = if (Build.VERSION.SDK_INT >= Constants.SYSTEM_BRIDGE_MIN_API) {
                 if (areRequirementsMet) {
@@ -379,8 +397,8 @@ class TriggerSetupDelegateImpl @Inject constructor(
                 is RecordTriggerState.Completed,
                 RecordTriggerState.Idle,
                     -> recordTriggerController.startRecording(
-                    enableEvdevRecording,
-                )
+                        enableEvdevRecording,
+                    )
             }
 
             result.onSuccess {

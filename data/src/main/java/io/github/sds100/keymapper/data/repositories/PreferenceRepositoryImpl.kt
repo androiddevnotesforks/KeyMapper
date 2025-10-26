@@ -26,7 +26,9 @@ class PreferenceRepositoryImpl @Inject constructor(
 
     private val dataStore = ctx.dataStore
 
-    override fun <T> get(key: Preferences.Key<T>): Flow<T?> = dataStore.data.map { it[key] }.distinctUntilChanged()
+    override fun <T> get(key: Preferences.Key<T>): Flow<T?> = dataStore.data.map {
+        it[key]
+    }.distinctUntilChanged()
 
     override fun <T> set(key: Preferences.Key<T>, value: T?) {
         coroutineScope.launch(Dispatchers.IO) {

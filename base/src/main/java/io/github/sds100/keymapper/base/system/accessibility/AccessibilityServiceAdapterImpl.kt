@@ -125,7 +125,9 @@ class AccessibilityServiceAdapterImpl @Inject constructor(
                 }
 
                 val pong: AccessibilityServiceEvent.Pong? = withTimeoutOrNull(2000L) {
-                    eventReceiver.first { it == AccessibilityServiceEvent.Pong(key) } as AccessibilityServiceEvent.Pong?
+                    eventReceiver.first {
+                        it == AccessibilityServiceEvent.Pong(key)
+                    } as AccessibilityServiceEvent.Pong?
                 }
 
                 if (pong == null) {
@@ -235,7 +237,9 @@ class AccessibilityServiceAdapterImpl @Inject constructor(
         }
 
         val pong: AccessibilityServiceEvent.Pong? = withTimeoutOrNull(2000L) {
-            eventReceiver.first { it == AccessibilityServiceEvent.Pong(key) } as AccessibilityServiceEvent.Pong?
+            eventReceiver.first {
+                it == AccessibilityServiceEvent.Pong(key)
+            } as AccessibilityServiceEvent.Pong?
         }
 
         pingJob.cancel()

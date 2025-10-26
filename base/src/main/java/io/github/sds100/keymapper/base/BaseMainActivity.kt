@@ -191,7 +191,9 @@ abstract class BaseMainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        Timber.i("MainActivity: onResume. Version: ${buildConfigProvider.version} ${buildConfigProvider.versionCode}")
+        Timber.i(
+            "MainActivity: onResume. Version: ${buildConfigProvider.version} ${buildConfigProvider.versionCode}",
+        )
 
         // This must be after onResume to ensure all the fragment lifecycles' have also
         // resumed which are observing these events.

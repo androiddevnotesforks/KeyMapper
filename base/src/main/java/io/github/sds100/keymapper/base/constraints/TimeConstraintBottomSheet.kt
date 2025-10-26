@@ -173,7 +173,9 @@ private fun TimeConstraintBottomSheet(
                 ) {
                     Icon(
                         imageVector = Icons.Outlined.Edit,
-                        contentDescription = stringResource(R.string.constraint_time_bottom_sheet_edit_start_time),
+                        contentDescription = stringResource(
+                            R.string.constraint_time_bottom_sheet_edit_start_time,
+                        ),
                     )
                 }
             }
@@ -204,7 +206,9 @@ private fun TimeConstraintBottomSheet(
                 ) {
                     Icon(
                         imageVector = Icons.Outlined.Edit,
-                        contentDescription = stringResource(R.string.constraint_time_bottom_sheet_edit_end_time),
+                        contentDescription = stringResource(
+                            R.string.constraint_time_bottom_sheet_edit_end_time,
+                        ),
                     )
                 }
             }

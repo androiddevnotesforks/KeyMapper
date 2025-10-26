@@ -202,7 +202,9 @@ abstract class BaseKeyMapperApp : MultiDexApplication() {
                 // when the user returns to the app let everything know that the permissions could have changed
                 notificationController.onOpenApp()
 
-                if (BuildConfig.DEBUG && permissionAdapter.isGranted(Permission.WRITE_SECURE_SETTINGS)) {
+                if (BuildConfig.DEBUG &&
+                    permissionAdapter.isGranted(Permission.WRITE_SECURE_SETTINGS)
+                ) {
                     accessibilityServiceAdapter.start()
                 }
             }

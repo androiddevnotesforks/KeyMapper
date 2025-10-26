@@ -102,13 +102,8 @@ interface SortKeyMapsUseCase {
     fun observeKeyMapsSorter(): Flow<Comparator<KeyMap>>
 }
 
-private class Sorter(
-    private val comparatorsOrder: List<Comparator<KeyMap>>,
-) : Comparator<KeyMap> {
-    override fun compare(
-        keyMap: KeyMap?,
-        otherKeyMap: KeyMap?,
-    ): Int {
+private class Sorter(private val comparatorsOrder: List<Comparator<KeyMap>>) : Comparator<KeyMap> {
+    override fun compare(keyMap: KeyMap?, otherKeyMap: KeyMap?): Int {
         if (keyMap == null || otherKeyMap == null) {
             return 0
         }

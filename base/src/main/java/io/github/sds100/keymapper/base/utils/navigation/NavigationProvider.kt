@@ -177,10 +177,7 @@ suspend inline fun <reified R> NavigationProvider.navigate(
 }
 
 @Composable
-fun SetupNavigation(
-    navigationProvider: NavigationProviderImpl,
-    navController: NavHostController,
-) {
+fun SetupNavigation(navigationProvider: NavigationProviderImpl, navController: NavHostController) {
     @SuppressLint("StateFlowValueCalledInComposition")
     val navEvent: NavigateEvent? by navigationProvider.onNavigate
         .collectAsStateWithLifecycle(navigationProvider.onNavigate.value)
@@ -367,7 +364,9 @@ private fun getDirection(destination: NavDestination<*>, requestKey: String): Na
 
         NavDestination.About -> NavBaseAppDirections.actionGlobalAboutFragment()
 
-        else -> throw IllegalArgumentException("Can not find a direction for this destination: $destination")
+        else -> throw IllegalArgumentException(
+            "Can not find a direction for this destination: $destination",
+        )
     }
 }
 

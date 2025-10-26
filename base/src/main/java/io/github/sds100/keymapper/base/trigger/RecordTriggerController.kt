@@ -114,7 +114,11 @@ class RecordTriggerControllerImpl @Inject constructor(
                     downEvdevEvents.add(event)
                 } else if (event.isUpEvent) {
                     onRecordKey(createEvdevRecordedKey(event))
-                    Timber.d("Recorded evdev event ${event.code} ${KeyEvent.keyCodeToString(event.androidCode)}")
+                    Timber.d(
+                        "Recorded evdev event ${event.code} ${KeyEvent.keyCodeToString(
+                            event.androidCode,
+                        )}",
+                    )
                 }
 
                 return true
@@ -130,7 +134,9 @@ class RecordTriggerControllerImpl @Inject constructor(
                             detectionSource,
                         )
                         onRecordKey(recordedKey)
-                        Timber.d("Recorded motion event ${KeyEvent.keyCodeToString(keyEvent.keyCode)}")
+                        Timber.d(
+                            "Recorded motion event ${KeyEvent.keyCodeToString(keyEvent.keyCode)}",
+                        )
                     }
                 }
                 return true

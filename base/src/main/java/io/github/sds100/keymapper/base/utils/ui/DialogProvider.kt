@@ -58,10 +58,7 @@ fun DialogProvider.onUserResponse(key: String, response: Any?) {
     onUserResponse(OnDialogResponseEvent(key, response))
 }
 
-suspend inline fun <reified R> DialogProvider.showDialog(
-    key: String,
-    ui: DialogModel<R>,
-): R? {
+suspend inline fun <reified R> DialogProvider.showDialog(key: String, ui: DialogModel<R>): R? {
     showDialog(ShowDialogEvent(key, ui))
 
     /*
@@ -74,32 +71,19 @@ suspend inline fun <reified R> DialogProvider.showDialog(
     ).first() as R?
 }
 
-fun DialogProvider.showDialogs(
-    fragment: Fragment,
-    binding: ViewDataBinding,
-) {
+fun DialogProvider.showDialogs(fragment: Fragment, binding: ViewDataBinding) {
     showDialogs(fragment.requireContext(), fragment.viewLifecycleOwner, binding.root)
 }
 
-fun DialogProvider.showDialogs(
-    fragment: Fragment,
-    rootView: View,
-) {
+fun DialogProvider.showDialogs(fragment: Fragment, rootView: View) {
     showDialogs(fragment.requireContext(), fragment.viewLifecycleOwner, rootView)
 }
 
-fun DialogProvider.showDialogs(
-    activity: FragmentActivity,
-    rootView: View,
-) {
+fun DialogProvider.showDialogs(activity: FragmentActivity, rootView: View) {
     showDialogs(activity, activity, rootView)
 }
 
-fun DialogProvider.showDialogs(
-    ctx: Context,
-    lifecycleOwner: LifecycleOwner,
-    rootView: View,
-) {
+fun DialogProvider.showDialogs(ctx: Context, lifecycleOwner: LifecycleOwner, rootView: View) {
     // must be onCreate because dismissing in onDestroy
     lifecycleOwner.launchRepeatOnLifecycle(Lifecycle.State.CREATED) {
         showDialog.onEach { event ->

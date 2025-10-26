@@ -205,7 +205,9 @@ fun ActionOptionsBottomSheet(
                         RadioButtonText(
                             isSelected = state.repeatMode == RepeatMode.TRIGGER_RELEASED,
                             text = stringResource(R.string.stop_repeating_when_trigger_released),
-                            onSelected = { callback.onSelectRepeatMode(RepeatMode.TRIGGER_RELEASED) },
+                            onSelected = {
+                                callback.onSelectRepeatMode(RepeatMode.TRIGGER_RELEASED)
+                            },
                         )
                     }
 
@@ -213,7 +215,9 @@ fun ActionOptionsBottomSheet(
                         RadioButtonText(
                             isSelected = state.repeatMode == RepeatMode.TRIGGER_PRESSED_AGAIN,
                             text = stringResource(R.string.stop_repeating_trigger_pressed_again),
-                            onSelected = { callback.onSelectRepeatMode(RepeatMode.TRIGGER_PRESSED_AGAIN) },
+                            onSelected = {
+                                callback.onSelectRepeatMode(RepeatMode.TRIGGER_PRESSED_AGAIN)
+                            },
                         )
                     }
 
@@ -250,6 +254,8 @@ fun ActionOptionsBottomSheet(
             if (state.showHoldDownDuration) {
                 Spacer(Modifier.height(8.dp))
 
+                val min = SliderMinimums.ACTION_HOLD_DOWN_DURATION
+                val max = SliderMaximums.ACTION_HOLD_DOWN_DURATION
                 SliderOptionText(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -259,7 +265,8 @@ fun ActionOptionsBottomSheet(
                     value = state.holdDownDuration.toFloat(),
                     valueText = { "${it.toInt()} ms" },
                     onValueChange = { callback.onHoldDownDurationChanged(it.toInt()) },
-                    valueRange = SliderMinimums.ACTION_HOLD_DOWN_DURATION.toFloat()..SliderMaximums.ACTION_HOLD_DOWN_DURATION.toFloat(),
+                    valueRange =
+                    min.toFloat()..max.toFloat(),
                     stepSize = SliderStepSizes.ACTION_HOLD_DOWN_DURATION,
                 )
             }
@@ -282,13 +289,17 @@ fun ActionOptionsBottomSheet(
                     RadioButtonText(
                         isSelected = state.holdDownMode == HoldDownMode.TRIGGER_RELEASED,
                         text = stringResource(R.string.stop_holding_down_when_trigger_released),
-                        onSelected = { callback.onSelectHoldDownMode(HoldDownMode.TRIGGER_RELEASED) },
+                        onSelected = {
+                            callback.onSelectHoldDownMode(HoldDownMode.TRIGGER_RELEASED)
+                        },
                     )
 
                     RadioButtonText(
                         isSelected = state.holdDownMode == HoldDownMode.TRIGGER_PRESSED_AGAIN,
                         text = stringResource(R.string.stop_holding_down_trigger_pressed_again),
-                        onSelected = { callback.onSelectHoldDownMode(HoldDownMode.TRIGGER_PRESSED_AGAIN) },
+                        onSelected = {
+                            callback.onSelectHoldDownMode(HoldDownMode.TRIGGER_PRESSED_AGAIN)
+                        },
                     )
 
                     Spacer(Modifier.width(8.dp))
@@ -303,6 +314,8 @@ fun ActionOptionsBottomSheet(
             if (state.showDelayBeforeNextAction) {
                 Spacer(Modifier.height(8.dp))
 
+                val min = SliderMinimums.DELAY_BEFORE_NEXT_ACTION
+                val max = SliderMaximums.DELAY_BEFORE_NEXT_ACTION
                 SliderOptionText(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -312,13 +325,16 @@ fun ActionOptionsBottomSheet(
                     value = state.delayBeforeNextAction.toFloat(),
                     valueText = { "${it.toInt()} ms" },
                     onValueChange = { callback.onDelayBeforeNextActionChanged(it.toInt()) },
-                    valueRange = SliderMinimums.DELAY_BEFORE_NEXT_ACTION.toFloat()..SliderMaximums.DELAY_BEFORE_NEXT_ACTION.toFloat(),
+                    valueRange =
+                    min.toFloat()..max.toFloat(),
                     stepSize = SliderStepSizes.DELAY_BEFORE_NEXT_ACTION,
                 )
             }
 
             Spacer(Modifier.height(8.dp))
 
+            val minMultiplier = SliderMinimums.ACTION_MULTIPLIER
+            val maxMultiplier = SliderMaximums.ACTION_MULTIPLIER
             SliderOptionText(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -332,7 +348,8 @@ fun ActionOptionsBottomSheet(
                 value = state.multiplier.toFloat(),
                 valueText = { "${it.toInt()}x" },
                 onValueChange = { callback.onMultiplierChanged(it.toInt()) },
-                valueRange = SliderMinimums.ACTION_MULTIPLIER.toFloat()..SliderMaximums.ACTION_MULTIPLIER.toFloat(),
+                valueRange =
+                minMultiplier.toFloat()..maxMultiplier.toFloat(),
                 stepSize = SliderStepSizes.ACTION_MULTIPLIER,
             )
 
